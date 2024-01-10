@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
@@ -37,9 +38,12 @@ namespace AspNetCoreDemoApp.Controllers
             {
                 return BadRequest("Invalid request format");
             }
+            Console.WriteLine($"Received {Request.Method} request at {Request.GetDisplayUrl()}");
+            Console.WriteLine($"Headers: {string.Join(", ", Request.Headers.Select(h => $"{h.Key}: {h.Value}"))}");
+            Console.WriteLine($"Email: {pdfRequest?.Email}");
 
-            Console.WriteLine($"Received POST request at {Request.GetDisplayUrl()}");
-            Console.WriteLine($"Email: {pdfRequest.Email}");
+            //Console.WriteLine($"Received POST request at {Request.GetDisplayUrl()}");
+            //Console.WriteLine($"Email: {pdfRequest.Email}");
 
             return Ok("Post body written to console.");
         }
