@@ -9,7 +9,7 @@ namespace AspNetCoreDemoApp.Controllers
     {
         public string Email { get; set; }
     }
-
+    [ApiController]
     [Route("api/[controller]")]
     public class ValuesController : ControllerBase
     {
